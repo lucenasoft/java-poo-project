@@ -2,7 +2,9 @@ package application;
 
 import java.time.LocalDate;
 
+import dominio.Bootcamp;
 import dominio.Curso;
+import dominio.Dev;
 import dominio.Mentoria;
 
 public class Main {
@@ -13,20 +15,26 @@ public class Main {
         curso1.setTitulo("Curso Java");
         curso1.setDescricao("Descrição curso Java");
         curso1.setCargaHoraria(8);
-
-        Curso curso2 = new Curso();
-        curso2.setTitulo("Curso Python");
-        curso2.setDescricao("Descrição curso Python");
-        curso2.setCargaHoraria(10);
-
         Mentoria mentoria = new Mentoria();
-
         mentoria.setTitulo("Mentória Java");
         mentoria.setDescricao("Descrição mentória Java");
         mentoria.setData(LocalDate.now());
 
 
-        System.out.println(mentoria);
+        Bootcamp bootcamp = new Bootcamp();
+        bootcamp.setNome("Bootcamp Java Developer");
+        bootcamp.setDescricao("Descrição Bootcamp Java Developer");
+        bootcamp.getConteudos().add(mentoria);
+
+        Dev devGabriel = new Dev();
+        devGabriel.setNome("Gabriel Lucena");
+        devGabriel.inscreverBootcamp(bootcamp);
+        System.out.println("Contéudos Inscritos" + devGabriel.getConteudosInscritos());
+        System.out.println("------------============--------------");
+        devGabriel.progredir();
+        System.out.println("Contéudos Inscritos " + devGabriel.getConteudosInscritos());
+        System.out.println("Contéudos Concluídos " + devGabriel.getConteudosConcluidos());
+        System.out.println("XP: " + devGabriel.calcularTotalXp());
 
     }
 
